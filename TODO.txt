@@ -1,0 +1,47 @@
+Alive
+- pv
+- pvMax
+- strength
++ strike
+
+
+Personnage extend Alive
+- name
+- inventory
++ breackBlock
++ swordStrike
+
+
+Zombie extend Alive
++ Scratch
+
+Spider extend Alive
++ PoisonousBite
+
+
+
+
+Block
+- toughness
+
+Dirt extends Block
+
+Stone extends Block
+
+
+
+
+Item
+- Material
+
+Pickaxe extends Item
+
+Sword extends Item
+
+
+
+
+Material
+- name
+- durability
+- strenght
