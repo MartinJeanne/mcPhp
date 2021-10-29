@@ -5,23 +5,23 @@ Alive
 + strike
 
 
-Personnage extend Alive
+Player extend Alive
 - name
 - inventory
 + breackBlock
-+ swordStrike
++ strike
 
 
 Zombie extend Alive
-+ Scratch
 
 Spider extend Alive
 + PoisonousBite
 
 
+Item
 
 
-Block
+Block extend Item
 - toughness
 
 Dirt extends Block

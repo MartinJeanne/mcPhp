@@ -4,7 +4,7 @@ class Alive {
   private int $pvMax;
   private int $strength;
 
-  function __construct(int $pv = 3, int $strength = 1) {
+  function __construct(int $pv = 1, int $strength = 1) {
     $this->pv = $pv;
     $this->pvMax = $pv;
     $this->strength = $strength;
@@ -19,14 +19,5 @@ class Alive {
 
   public function strike(Alive $otherAlive) {
     $otherAlive->setPv($otherAlive->getPv() - $this->strength);
-}
-
-  public function __toString() {
-    $this->pv;
   }
 }
-
-$martin = new Alive();
-echo $martin->getPv(), '<br>';
-$martin->strike($martin);
-echo $martin->getPv();
