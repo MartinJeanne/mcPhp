@@ -2,7 +2,7 @@
 class Alive {
   private int $pv;
   private int $pvMax;
-  private int $strength;
+  protected int $strength;
 
   function __construct(int $pv = 1, int $strength = 1) {
     $this->pv = $pv;

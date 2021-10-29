@@ -31,12 +31,12 @@ Stone extends Block
 
 
 
-Item
+Tool extends Item
 - Material
 
-Pickaxe extends Item
+Pickaxe extends Tool
 
-Sword extends Item
+Sword extends Tool
 
 
 
