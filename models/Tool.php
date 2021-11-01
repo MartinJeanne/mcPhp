@@ -8,7 +8,7 @@ class Tool extends Item {
   private int $durability;
 
   function __construct(Material $material, $tool) {
-    parent::__construct($material->getType(), ' ' , $tool);
+    parent::__construct($material->getType() . ' ' . $tool);
     $this->type = $material->getType();
     $this->strength = $material->getStrength();
     $this->durability = $material->getDurability();
