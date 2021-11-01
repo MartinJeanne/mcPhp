@@ -4,13 +4,13 @@ foreach (glob("models/*.php") as $filename) {
 }
 
 function say($msg) {
-    echo $msg, '<br>';
+    echo $msg . '<br>';
 }
 
 $martin = new Player();
 $iron = new Material('iron');
 $sword = new Sword($iron);
-$zombie = new Monster();
+$zombie = new Zombie();
 
 $martin->addInInventory($sword);
 say($zombie->getPv());
