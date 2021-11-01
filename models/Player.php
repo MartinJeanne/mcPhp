@@ -17,9 +17,9 @@ class Player extends Alive {
     }
   }
 
-  public function addInInventory($element) {
-    if (count($this->inventory) <= 6) {
-      array_push($this->inventory, $element);
+  public function addInInventory($item) {
+    if (is_a($item, 'Item') && count($this->inventory) <= 6) {
+      array_push($this->inventory, $item);
     }
   }
   public function getInventory() { return $this->inventory;}
@@ -27,7 +27,7 @@ class Player extends Alive {
   public function strike(Alive $alive) {
     foreach ($this->inventory as $item) {
       if (is_a($item, 'Sword')) {
-        $alive->setPv($alive->getPv() - $item->getMaterial()->getStrength());
+        $alive->setPv($alive->getPv() - $item->getStrength());
         return;
       }
     }

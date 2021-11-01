@@ -22,7 +22,7 @@ class Material {
         $this->durability = 40;
         break;
 
-      case 'diamant':
+      case 'diamond':
         $this->strength = 6;
         $this->durability = 100;
         break;

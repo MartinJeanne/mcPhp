@@ -7,8 +7,8 @@ require_once "models/Monster.php";
 function say($msg) { echo $msg, '<br>'; }
 
 $martin = new Player();
-$wood = new Material('iron');
-$sword = new Sword($wood);
+$iron = new Material('iron');
+$sword = new Sword($iron);
 $zombie = new Monster();
 
 $martin->addInInventory($sword);
