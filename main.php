@@ -7,13 +7,13 @@ function say($msg) {
     echo $msg . '<br>';
 }
 
-$martin = new Player();
-$iron = new Material('iron');
-$sword = new Sword($iron);
+$steve = new Player();
+$wood = new Material('wood');
+$sword = new Sword($wood);
 $zombie = new Zombie();
 
-$martin->addInInventory($sword);
+$steve->addInInventory($sword);
+
 say($zombie->getPv());
-$martin->strike($zombie);
+$steve->strike($zombie);
 say($zombie->getPv());
-say($sword);

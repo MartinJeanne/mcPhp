@@ -18,4 +18,15 @@ class Tool extends Item {
   public function getType() { return $this->type; }
   public function getStrength() { return $this->strength; }
   public function getDurability() { return $this->durability; }
+
+  public function loseDurability($nb=1) {
+    $this->durability -= $nb;
+  }
+
+  public function isToolBroken() {
+    if ($this->durability <= 0) {
+      return true;
+    }
+    return false;
+  }
 }

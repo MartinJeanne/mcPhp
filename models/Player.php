@@ -22,15 +22,28 @@ class Player extends Alive {
       array_push($this->inventory, $item);
     }
   }
+  public function removeFromInventory($item) {
+    $key = array_search($item, $this->inventory);
+    unset($this->inventory[$key]);
+  }
+
   public function getInventory() { return $this->inventory;}
 
   public function strike(Alive $alive) {
     foreach ($this->inventory as $item) {
       if (is_a($item, 'Sword')) {
         $alive->setPv($alive->getPv() - $item->getStrength());
+        $this->toolUsed($item);
         return;
       }
     }
-      $alive->setPv($alive->getPv() - $this->strength);
+    parent::strike($alive);
+  }
+
+  private function toolUsed($tool) {
+    $tool->loseDurability();
+    if ($tool->isToolBroken()) {
+      $this->removeFromInventory($tool);
+    }
   }
 }
