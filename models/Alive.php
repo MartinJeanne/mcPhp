@@ -1,7 +1,7 @@
 <?php
 abstract class Alive {
   private int $pv;
-  private int $pvMax;
+  private static int $pvMax;
   protected int $strength;
 
   function __construct(int $pv = 1, int $strength = 1) {
@@ -19,5 +19,13 @@ abstract class Alive {
 
   public function strike(Alive $otherAlive) {
     $otherAlive->setPv($otherAlive->getPv() - $this->strength);
+  }
+
+  public function setPvMax(int $var = null) {
+    Alive::$pvMax = $var;
+  }
+
+  public function getPvMax() {
+    return Alive::$pvMax;
   }
 }

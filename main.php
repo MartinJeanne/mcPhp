@@ -8,14 +8,7 @@ function say($msg) {
 }
 
 $steve = new Player();
-$wood = new Material('wood');
-$sword = new Sword($wood);
-$zombie = new Zombie();
+$alex  = new Player();
 
-$test = new Item('test');
-
-$steve->addInInventory($sword);
-
-say($zombie->getPv());
-$steve->strike($zombie);
-say($zombie->getPv());
+$steve->setPvMax(5);
+$alex->getPvMax();
