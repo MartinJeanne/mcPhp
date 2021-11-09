@@ -3,10 +3,11 @@ require_once "Alive.php";
 
 class Player extends Alive {
   private String $name;
+  protected static int $pvMax = 10;
   private $inventory = array();
 
-  function __construct($name = 'Steve', int $pv = 10, int $strength = 1) {
-    parent::__construct($pv, $strength);
+  function __construct($name = 'Steve') {
+    parent::__construct(Player::$pvMax, 1);
     $this->name = $name;
   }
 
@@ -32,7 +33,7 @@ class Player extends Alive {
   public function strike(Alive $alive) {
     foreach ($this->inventory as $item) {
       if (is_a($item, 'Sword')) {
-        $alive->setPv($alive->getPv() - $item->getStrength());
+        $alive->isStrike($item->getStrength());
         $this->toolUsed($item);
         return;
       }

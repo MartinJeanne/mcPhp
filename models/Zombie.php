@@ -2,7 +2,9 @@
 require_once "Alive.php";
 
 class Zombie extends Alive {
-  function __construct(int $pv = 15, int $strength = 2) {
-    parent::__construct($pv, $strength);
+  protected static int $pvMax = 15;
+
+  function __construct() {
+    parent::__construct(Zombie::$pvMax, 2);
   }
 }

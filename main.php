@@ -9,6 +9,8 @@ function say($msg) {
 
 $steve = new Player();
 $alex  = new Player();
+$zombie = new Zombie();
 
-$steve->setPvMax(5);
-$alex->getPvMax();
+say($alex->getPv());
+$zombie->strike($alex);
+say($alex->getPv());
