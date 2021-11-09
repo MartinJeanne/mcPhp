@@ -1,5 +1,5 @@
 <?php
-class Alive {
+abstract class Alive {
   private int $pv;
   private int $pvMax;
   protected int $strength;

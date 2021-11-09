@@ -1,5 +1,5 @@
 <?php
-class Item {
+abstract class Item {
   private String $name;
 
   function __construct($name) {

@@ -12,6 +12,8 @@ $wood = new Material('wood');
 $sword = new Sword($wood);
 $zombie = new Zombie();
 
+$test = new Item('test');
+
 $steve->addInInventory($sword);
 
 say($zombie->getPv());

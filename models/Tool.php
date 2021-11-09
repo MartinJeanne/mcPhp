@@ -2,7 +2,7 @@
 require_once "Item.php";
 require_once "Material.php";
 
-class Tool extends Item {
+abstract class Tool extends Item {
   private String $type;
   private int $strength;
   private int $durability;
