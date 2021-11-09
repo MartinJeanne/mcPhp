@@ -9,9 +9,11 @@ abstract class Alive {
     $this->strength = $strength;
   }
 
-  function getPv() { return $this->pv; }
+  function getPv() {
+    return $this->pv;
+  }
   function setPv(int $pv) {
-    if($pv >= 0 && $pv <= $this::$pvMax) {
+    if ($pv >= 0 && $pv <= $this::$pvMax) {
       $this->pv = $pv;
     }
   }

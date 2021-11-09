@@ -12,14 +12,19 @@ abstract class Tool extends Item {
     $this->type = $material->getType();
     $this->strength = $material->getStrength();
     $this->durability = $material->getDurability();
-
   }
 
-  public function getType() { return $this->type; }
-  public function getStrength() { return $this->strength; }
-  public function getDurability() { return $this->durability; }
+  public function getType() {
+    return $this->type;
+  }
+  public function getStrength() {
+    return $this->strength;
+  }
+  public function getDurability() {
+    return $this->durability;
+  }
 
-  public function loseDurability($nb=1) {
+  public function loseDurability($nb = 1) {
     $this->durability -= $nb;
   }
 

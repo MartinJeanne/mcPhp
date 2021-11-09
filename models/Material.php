@@ -29,7 +29,13 @@ class Material {
     }
   }
 
-  public function getType() { return $this->type; }
-  public function getStrength() { return $this->strength; }
-  public function getDurability() { return $this->durability; }
+  public function getType() {
+    return $this->type;
+  }
+  public function getStrength() {
+    return $this->strength;
+  }
+  public function getDurability() {
+    return $this->durability;
+  }
 }

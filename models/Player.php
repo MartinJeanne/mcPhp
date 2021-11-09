@@ -11,7 +11,9 @@ class Player extends Alive {
     $this->name = $name;
   }
 
-  public function getName() { return $this->name; }
+  public function getName() {
+    return $this->name;
+  }
   public function setName(String $name) {
     if (strlen($name) > 0) {
       $this->name = $name;
@@ -28,7 +30,9 @@ class Player extends Alive {
     unset($this->inventory[$key]);
   }
 
-  public function getInventory() { return $this->inventory;}
+  public function getInventory() {
+    return $this->inventory;
+  }
 
   public function strike(Alive $alive) {
     foreach ($this->inventory as $item) {
