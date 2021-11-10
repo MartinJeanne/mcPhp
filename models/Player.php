@@ -3,11 +3,11 @@ require_once "Alive.php";
 
 class Player extends Alive {
   private String $name;
-    const pvMax = 10;
+  const pvMax = 10;
   private $inventory = array();
 
   function __construct($name = 'Steve') {
-    parent::__construct(Player::$pvMax, 1);
+    parent::__construct(Player::pvMax, 1);
     $this->name = $name;
   }
 

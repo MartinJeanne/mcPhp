@@ -1,7 +1,7 @@
 <?php
 abstract class Alive {
   private int $pv;
-  protected static int $pvMax;
+  const pvMax = 1;
   protected int $strength;
 
   function __construct(int $pv = 1, int $strength = 1) {
@@ -13,7 +13,7 @@ abstract class Alive {
     return $this->pv;
   }
   function setPv(int $pv) {
-    if ($pv >= 0 && $pv <= $this::$pvMax) {
+    if ($pv >= 0 && $pv <= $this::pvMax) {
       $this->pv = $pv;
     }
   }
