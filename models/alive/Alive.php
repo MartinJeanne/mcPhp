@@ -22,7 +22,7 @@ abstract class Alive {
     return $this->strength;
   }
 
-  public function strike(Alive $otherAlive) { 
+  public function strike(Alive $otherAlive) {
     $otherAlive->isStrike($this->strength);
   }
 

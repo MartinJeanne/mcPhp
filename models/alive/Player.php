@@ -67,8 +67,7 @@ class Player extends Alive {
         $this->addInInventory($block);
       }
       $this->toolUsed($pickAxe);
-    }
-    else {
+    } else {
       if ($this->strength >= $block::toughness) {
         $this->addInInventory($block);
       } else {
