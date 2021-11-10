@@ -2,5 +2,9 @@
 require_once "Block.php";
 
 class Dirt extends Block {
-    protected static const toughness = 1;
+    const toughness = 1;
+
+    function __construct() {
+        parent::__construct('dirt');
+    }
 }

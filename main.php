@@ -12,7 +12,7 @@ $alex  = new Player();
 $zombie = new Zombie();
 $test = new Dirt();
 
-say($test->getToughness());
+say($test);
 
 say($alex->getPv());
 $zombie->strike($alex);

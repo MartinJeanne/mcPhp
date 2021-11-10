@@ -2,11 +2,11 @@
 require_once "Item.php";
 
 abstract class Block extends Item {
-    protected static const toughness = 0;
+    const toughness = 0;
 
-    function __construct() {
-        parent::__construct('block');
-      }
+    function __construct($blockType) {
+        parent::__construct($blockType . ' block');
+    }
 
     public function getToughness() {
         return $this::toughness;
