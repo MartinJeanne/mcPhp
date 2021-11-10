@@ -10,6 +10,9 @@ function say($msg) {
 $steve = new Player();
 $alex  = new Player();
 $zombie = new Zombie();
+$test = new Dirt();
+
+say($test->getToughness());
 
 say($alex->getPv());
 $zombie->strike($alex);
