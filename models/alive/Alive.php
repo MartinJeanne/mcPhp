@@ -1,6 +1,6 @@
 <?php
 abstract class Alive {
-  private int $pv;
+  protected int $pv;
   const pvMax = 1;
   protected int $strength;
 
@@ -18,7 +18,11 @@ abstract class Alive {
     }
   }
 
-  public function strike(Alive $otherAlive) {
+  public function getStrengh() {
+    return $this->strength;
+  }
+
+  public function strike(Alive $otherAlive) { 
     $otherAlive->isStrike($this->strength);
   }
 

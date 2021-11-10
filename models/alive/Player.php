@@ -20,6 +20,10 @@ class Player extends Alive {
     }
   }
 
+  public function getInventory() {
+    return $this->inventory;
+  }
+
   public function addInInventory($item) {
     if (is_a($item, 'Item') && count($this->inventory) <= 6) {
       array_push($this->inventory, $item);
@@ -30,25 +34,46 @@ class Player extends Alive {
     unset($this->inventory[$key]);
   }
 
-  public function getInventory() {
-    return $this->inventory;
-  }
-
-  public function strike(Alive $alive) {
+  private function searchInInventory($itemWanted) {
     foreach ($this->inventory as $item) {
-      if (is_a($item, 'Sword')) {
-        $alive->isStrike($item->getStrength());
-        $this->toolUsed($item);
-        return;
+      if (is_a($item, $itemWanted)) {
+        return $item;
       }
     }
-    parent::strike($alive);
+    return false;
   }
 
   private function toolUsed($tool) {
     $tool->loseDurability();
     if ($tool->isToolBroken()) {
       $this->removeFromInventory($tool);
+    }
+  }
+
+  public function strike(Alive $alive) {
+    $sword = $this->searchInInventory('Sword');
+    if ($sword) {
+      $alive->isStrike($sword->getStrength());
+      $this->toolUsed($sword);
+    } else {
+      parent::strike($alive);
+    }
+  }
+
+  public function breakBlock(Block $block) {
+    $pickAxe = $this->searchInInventory('PickAxe');
+    if ($pickAxe) {
+      if ($pickAxe->getStrength() >= $block::toughness) {
+        $this->addInInventory($block);
+      }
+      $this->toolUsed($pickAxe);
+    }
+    else {
+      if ($this->strength >= $block::toughness) {
+        $this->addInInventory($block);
+      } else {
+        $this->setPv($this->getPv() - 1);
+      }
     }
   }
 }
