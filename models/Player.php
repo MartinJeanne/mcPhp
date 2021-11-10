@@ -3,7 +3,7 @@ require_once "Alive.php";
 
 class Player extends Alive {
   private String $name;
-  protected static int $pvMax = 10;
+    const pvMax = 10;
   private $inventory = array();
 
   function __construct($name = 'Steve') {
