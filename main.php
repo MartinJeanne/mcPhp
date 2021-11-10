@@ -8,12 +8,13 @@ function say($msg) {
 }
 
 $steve = new Player();
-$alex  = new Player();
 $zombie = new Zombie();
-$test = new Dirt();
 
-say($test);
+$wood = new Material('wood');
+$sword = new Sword($wood);
 
-say($alex->getPv());
-$zombie->strike($alex);
-say($alex->getPv());
+$steve->addInInventory($sword);
+
+say($zombie->getPv());
+$steve->strike($zombie);
+say($zombie->getPv());

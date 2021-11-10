@@ -11,6 +11,8 @@ class Player extends Alive {
     $this->name = $name;
   }
 
+
+  // Getter and Setter
   public function getName() {
     return $this->name;
   }
@@ -20,6 +22,12 @@ class Player extends Alive {
     }
   }
 
+  public function getInventory() {
+    return $this->inventory;
+  }
+
+
+  // Methods to manage Player inventory
   public function addInInventory($item) {
     if (is_a($item, 'Item') && count($this->inventory) <= 6) {
       array_push($this->inventory, $item);
@@ -30,19 +38,13 @@ class Player extends Alive {
     unset($this->inventory[$key]);
   }
 
-  public function getInventory() {
-    return $this->inventory;
-  }
-
-  public function strike(Alive $alive) {
+  private function checkInInventory($itemWanted) {
     foreach ($this->inventory as $item) {
-      if (is_a($item, 'Sword')) {
-        $alive->isStrike($item->getStrength());
-        $this->toolUsed($item);
-        return;
+      if (is_a($item, $itemWanted)) {
+        return $item;
       }
     }
-    parent::strike($alive);
+    return false;
   }
 
   private function toolUsed($tool) {
@@ -50,5 +52,21 @@ class Player extends Alive {
     if ($tool->isToolBroken()) {
       $this->removeFromInventory($tool);
     }
+  }
+
+
+  // Other Player methods
+  public function strike(Alive $alive) {
+    $item = $this->checkInInventory('Sword');
+    if ($item) {
+      $alive->isStrike($item->getStrength());
+      $this->toolUsed($item);
+    } else {
+      parent::strike($alive);
+    }
+  }
+
+  public function breakBlock(Block $block) {
+    $block::toughness;
   }
 }
