@@ -26,6 +26,10 @@ class Material {
         $this->strength = 6;
         $this->durability = 100;
         break;
+
+      default:
+        $this->strength = 0;
+        $this->durability = 0;
     }
   }
 
