@@ -1,5 +1,5 @@
 <?php
-require_once "Item.php";
+require_once __DIR__ . "/../Item.php";
 require_once "Material.php";
 
 abstract class Tool extends Item {

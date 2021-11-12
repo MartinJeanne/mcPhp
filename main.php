@@ -1,7 +1,16 @@
 <?php
-foreach (glob("models/*.php") as $filename) {
-    require_once $filename;
+function _require_all($dir) {
+    $scan = glob("$dir/*");
+    foreach ($scan as $path) {
+        if (preg_match('/\.php$/', $path)) {
+            require_once $path;
+        } elseif (is_dir($path)) {
+            _require_all($path);
+        }
+    }
 }
+
+_require_all('models');
 
 function say($msg) {
     echo $msg . '<br>';
@@ -11,10 +20,15 @@ $steve = new Player();
 $zombie = new Zombie();
 
 $wood = new Material('wood');
-$sword = new Sword($wood);
 
-$steve->addInInventory($sword);
+$pickaxe = new Pickaxe($wood);
+$steve->addInInventory($pickaxe);
 
-say($zombie->getPv());
-$steve->strike($zombie);
-say($zombie->getPv());
+$dirt = new Dirt();
+$steve->breakBlock($dirt);
+
+$t = $steve->getInventory();
+
+foreach ($t as $v) {
+    say($v);
+}

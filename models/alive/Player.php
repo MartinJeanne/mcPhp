@@ -3,11 +3,11 @@ require_once "Alive.php";
 
 class Player extends Alive {
   private String $name;
-  protected static int $pvMax = 10;
+  const pvMax = 10;
   private $inventory = array();
 
   function __construct($name = 'Steve') {
-    parent::__construct(Player::$pvMax, 1);
+    parent::__construct(Player::pvMax, 1);
     $this->name = $name;
   }
 
@@ -38,7 +38,7 @@ class Player extends Alive {
     unset($this->inventory[$key]);
   }
 
-  private function checkInInventory($itemWanted) {
+  private function searchInInventory($itemWanted) {
     foreach ($this->inventory as $item) {
       if (is_a($item, $itemWanted)) {
         return $item;
@@ -55,18 +55,31 @@ class Player extends Alive {
   }
 
 
+
   // Other Player methods
   public function strike(Alive $alive) {
-    $item = $this->checkInInventory('Sword');
-    if ($item) {
-      $alive->isStrike($item->getStrength());
-      $this->toolUsed($item);
+    $sword = $this->searchInInventory('Sword');
+    if ($sword) {
+      $alive->isStrike($sword->getStrength());
+      $this->toolUsed($sword);
     } else {
       parent::strike($alive);
     }
   }
 
   public function breakBlock(Block $block) {
-    $block::toughness;
+    $pickAxe = $this->searchInInventory('PickAxe');
+    if ($pickAxe) {
+      if ($pickAxe->getStrength() >= $block::toughness) {
+        $this->addInInventory($block);
+      }
+      $this->toolUsed($pickAxe);
+    } else {
+      if ($this->strength >= $block::toughness) {
+        $this->addInInventory($block);
+      } else {
+        $this->setPv($this->getPv() - 1);
+      }
+    }
   }
 }
